@@ -1,0 +1,249 @@
+# MediBrief Configuration
+
+# API Keys and Authentication
+api_keys:
+  # PubMed/NCBI E-utilities API key
+  # Get from: https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/
+  pubmed: "YOUR_PUBMED_API_KEY"
+
+  # Google Cloud Project ID
+  gcp_project_id: "YOUR_GCP_PROJECT_ID"
+
+  # Service account key file path (for local development)
+  # For cloud deployment, use service account roles instead
+  gcp_service_account_key: "path/to/service-account-key.json"
+
+  # Runway API key
+  # Get from: https://app.runwayml.com/settings/api-keys
+  runway: "YOUR_RUNWAY_API_KEY"
+
+# PubMed API Settings
+pubmed:
+  # Maximum number of papers to fetch per request
+  max_results_per_query: 10
+
+  # Default search fields
+  default_fields:
+    - "title"
+    - "abstract"
+    - "authors"
+    - "journal"
+    - "publication_date"
+    - "doi"
+
+  # Medical specialties to search for
+  specialties:
+    - "cardiology"
+    - "neurology"
+    - "oncology"
+    - "pediatrics"
+    - "psychiatry"
+    - "infectious disease"
+    - "endocrinology"
+    - "gastroenterology"
+    - "rheumatology"
+    - "pulmonology"
+
+  # Time period for paper search (in days)
+  time_period_days: 7
+
+  # Rate limiting (requests per second)
+  rate_limit: 3
+
+# PDF Processing
+pdf_processing:
+  # Temporary storage for downloaded PDFs
+  temp_storage_path: "temp/pdfs"
+
+  # OCR settings for image text extraction
+  ocr:
+    language: "eng"
+    config: "--oem 3 --psm 6"
+
+  # Figure extraction settings
+  figure_extraction:
+    min_figure_size: 100  # Minimum pixel size to consider as figure
+    caption_keywords:
+      - "Figure"
+      - "Fig."
+      - "Table"
+      - "Chart"
+      - "Graph"
+      - "Image"
+
+# AI Processing
+ai_processing:
+  # Vertex AI model settings
+  vertex_ai:
+    location: "us-central1"
+    model_name: "gemini-1.5-pro"
+
+  # Summarization settings
+  summarization:
+    max_length: 800
+    min_length: 500
+    temperature: 0.2
+    top_p: 0.95
+
+  # Key takeaways settings
+  key_takeaways:
+    count: 5
+    max_length_each: 100
+
+# Image Analysis
+image_analysis:
+  # Vision AI settings
+  vision_ai:
+    max_results: 10
+    feature_types:
+      - "TEXT_DETECTION"
+      - "IMAGE_PROPERTIES"
+      - "OBJECT_LOCALIZATION"
+
+  # Figure selection settings
+  figure_selection:
+    max_figures: 5
+    min_quality_score: 0.7
+
+# Text-to-Speech
+tts:
+  # Voice settings
+  voice:
+    language_code: "en-US"
+    name: "en-US-Neural2-F"  # Professional female voice
+    speaking_rate: 0.9
+    pitch: 0.0
+
+  # Audio settings
+  audio:
+    encoding: "MP3"
+    sample_rate_hertz: 24000
+
+  # Chunk settings for API limits
+  max_chunk_length: 5000  # Characters per API request
+
+# Video Generation
+video_generation:
+  # Output settings
+  output:
+    resolution: "1080p"  # 1920x1080
+    fps: 30
+    format: "mp4"
+
+  # Style settings
+  style:
+    background_color: "#FFFFFF"
+    text_color: "#333333"
+    highlight_color: "#4285F4"  # Google Blue
+    font: "Arial"
+    title_font_size: 48
+    body_font_size: 32
+
+  # Timing settings
+  timing:
+    intro_duration: 5  # seconds
+    slide_duration: 10  # seconds
+    transition_duration: 0.5  # seconds
+    outro_duration: 5  # seconds
+
+  # Video generation method
+  # Options: "moviepy" or "runway"
+  method: "moviepy"
+
+  # Runway Gen-2 API settings
+  runway:
+    # API settings
+    max_retries: 5
+    retry_delay: 10  # seconds
+    timeout: 120  # seconds
+
+    # Scene generation settings
+    scene_duration: 4  # seconds per scene
+    max_scenes: 10  # maximum number of scenes to generate
+
+    # Style settings
+    style_preset: "medical"  # style preset for scene generation
+
+    # Prompt settings
+    prompt_templates:
+      title: "Professional medical video title sequence showing '{title}'. Clean, modern design with blue and white color scheme."
+      abstract: "Visual representation of medical research about {title}. Professional laboratory setting with researchers analyzing data."
+      methods: "Medical laboratory with scientists conducting experiments. Clinical trial visualization with modern equipment and data analysis."
+      results: "Data visualization of medical research results. Charts, graphs, and statistical analysis in a professional setting."
+      conclusion: "Medical professionals discussing research findings in a conference room. Clinical implementation of research results."
+
+    # Post-processing settings
+    add_subtitles: true
+    subtitle_font: "Arial"
+    subtitle_size: 24
+    subtitle_color: "#FFFFFF"
+    subtitle_background: "#000000AA"  # Semi-transparent black
+
+# Cloud Storage
+cloud_storage:
+  # Bucket names
+  buckets:
+    videos: "medbrief-videos"
+    pdfs: "medbrief-pdfs"
+    images: "medbrief-images"
+    audio: "medbrief-audio"
+
+  # Storage classes
+  storage_class: "STANDARD"
+
+  # Retention policy (days)
+  retention_days: 30
+
+# YouTube Upload
+youtube:
+  # Channel settings
+  channel_id: "YOUR_YOUTUBE_CHANNEL_ID"
+
+  # Video settings
+  video:
+    category_id: "27"  # Education
+    privacy_status: "public"  # public, unlisted, private
+    tags:
+      - "medical research"
+      - "healthcare"
+      - "medicine"
+      - "research summary"
+
+  # Description template
+  description_template: |
+    This video summarizes the research paper: {title}
+
+    Authors: {authors}
+    Journal: {journal}
+    Publication Date: {publication_date}
+    DOI: {doi}
+
+    Key Takeaways:
+    {key_takeaways}
+
+    This summary was automatically generated by MediBrief.
+    For more medical research summaries, subscribe to our channel.
+
+# Automation Pipeline
+pipeline:
+  # Schedule settings (cron format)
+  schedule: "0 0 * * *"  # Daily at midnight
+
+  # Parallel processing
+  max_concurrent_papers: 5
+
+  # Error handling
+  max_retries: 3
+  retry_delay_seconds: 60
+
+  # Notification settings
+  notifications:
+    email: "your.email@example.com"
+    error_reporting: true
+    success_reporting: true
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/medbrief.log"
