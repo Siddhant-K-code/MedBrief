@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background with gradient -->
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4285F4;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#34A853;stop-opacity:1" />
+        </linearGradient>
+        <!-- Glow effect -->
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- Main background -->
+    <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+    <!-- Decorative elements -->
+    <circle cx="100" cy="100" r="80" fill="#ffffff" opacity="0.1"/>
+    <circle cx="1100" cy="530" r="100" fill="#ffffff" opacity="0.1"/>
+
+    <!-- Medical icons -->
+    <g transform="translate(50, 200)">
+        <!-- Medical cross -->
+        <rect x="0" y="0" width="40" height="120" fill="#ffffff" rx="5"/>
+        <rect x="-40" y="40" width="120" height="40" fill="#ffffff" rx="5"/>
+    </g>
+
+    <!-- AI/ML representation -->
+    <g transform="translate(900, 100)">
+        <!-- Neural network nodes -->
+        <circle cx="0" cy="0" r="10" fill="#ffffff"/>
+        <circle cx="40" cy="40" r="10" fill="#ffffff"/>
+        <circle cx="-40" cy="40" r="10" fill="#ffffff"/>
+        <!-- Connections -->
+        <line x1="0" y1="0" x2="40" y2="40" stroke="#ffffff" stroke-width="2"/>
+        <line x1="0" y1="0" x2="-40" y2="40" stroke="#ffffff" stroke-width="2"/>
+    </g>
+
+    <!-- Main content -->
+    <g transform="translate(600, 315)">
+        <!-- Logo/Icon -->
+        <!-- <circle cx="-200" cy="-50" r="60" fill="#ffffff" opacity="0.9"/>
+        <text x="-200" y="-40" font-family="Arial" font-size="40" fill="#4285F4" text-anchor="middle">MB</text> -->
+
+        <!-- Title -->
+        <text x="0" y="-50" font-family="Arial" font-size="64" fill="#ffffff" text-anchor="middle" font-weight="bold">MediBrief</text>
+
+        <!-- Tagline -->
+        <text x="0" y="0" font-family="Arial" font-size="24" fill="#ffffff" text-anchor="middle" opacity="0.9">
+            AI-Powered Medical Research Summaries
+        </text>
+
+        <!-- Feature highlights -->
+        <g transform="translate(0, 35)">
+            <text x="0" y="0" font-family="Arial" font-size="20" fill="#ffffff" text-anchor="middle" opacity="0.8">
+                Transform Complex Medical Papers into Engaging Video Summaries
+            </text>
+        </g>
+    </g>
+
+    <!-- Bottom bar with stats -->
+    <rect x="0" y="530" width="1200" height="100" fill="#ffffff" opacity="0.1"/>
+    <g transform="translate(600, 580)">
+        <text x="-400" y="0" font-family="Arial" font-size="18" fill="#ffffff" text-anchor="middle">
+            🤖 AI-Powered
+        </text>
+        <text x="-230" y="0" font-family="Arial" font-size="18" fill="#ffffff" text-anchor="middle">
+            📚 PubMed Integration
+        </text>
+        <text x="0" y="0" font-family="Arial" font-size="18" fill="#ffffff" text-anchor="middle">
+            🎥 Auto Video Generation
+        </text>
+        <text x="200" y="0" font-family="Arial" font-size="18" fill="#ffffff" text-anchor="middle">
+            📊 Figure Analysis
+        </text>
+        <text x="390" y="0" font-family="Arial" font-size="18" fill="#ffffff" text-anchor="middle">
+            🎯 Clinical Relevance
+        </text>
+    </g>
+
+    <!-- Decorative elements -->
+    <g transform="translate(100, 400)">
+        <!-- Paper icon -->
+        <rect x="0" y="0" width="60" height="80" fill="#ffffff" opacity="0.2" rx="5"/>
+        <line x1="10" y1="20" x2="50" y2="20" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+        <line x1="10" y1="40" x2="50" y2="40" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+    </g>
+
+    <!-- Animated elements (will be handled by CSS) -->
+    <style>
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</svg>

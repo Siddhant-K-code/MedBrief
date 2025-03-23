@@ -1,5 +1,16 @@
 # MediBrief
 
+<div align="center">
+  <img src="docs/banner.svg" alt="MediBrief Banner">
+  <p>
+    <a href="#features">Features</a> •
+    <a href="#system-requirements">Requirements</a> •
+    <a href="#installation">Installation</a> •
+    <a href="#usage">Usage</a> •
+    <a href="#project-structure">Structure</a>
+  </p>
+</div>
+
 MediBrief is an automated system that summarizes medical research papers into concise, informative videos. The system fetches papers from PubMed, processes them, and creates professional videos with narration that are automatically uploaded to YouTube.
 
 ## Features
